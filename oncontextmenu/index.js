@@ -1,10 +1,15 @@
 // 获取dom元素
-var body=document.getElementById("body");
+// var body=document.getElementById("body");
+var p=document.getElementById("p")
 var ul=document.getElementById("ul");
+
+// 让盒子的位置任意变化
+p.style.left=Math.random()*(document.body.clientWidth-200)+'px';
+p.style.top=Math.random()*(document.body.clientHeight-100)+'px';
 
 // oncontextmenu事件：用户右击时执行。可利用事件监听器调用，调用事件名没有“on”,
 // 注意这里函数调用不加括号，会出错。
-body.addEventListener("contextmenu",menuOut); 
+p.addEventListener("contextmenu",menuOut); 
 
 function menuOut(event){
 	event.preventDefault(); //取消事件的默认动作
@@ -23,7 +28,7 @@ function menuOut(event){
 	if(rh<228) {ul.style.top=(event.clientY-228)+'px';}
 }
 
-body.onclick=function(){
+p.onclick=function(){
 	ul.style.display="none";
 }
 
