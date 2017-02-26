@@ -6,3 +6,6 @@
 
 <a href="http://ife.baidu.com/course/detail/id/26"><h2>自定义网页右键菜单</h2></a>
 <p>不要和电脑自带的弄混哦：https://0ling0.github.io/IFE2017/oncontextmenu/index.html</p>
+
+<a href="http://ife.baidu.com/course/detail/id/104"><h2>响应式网格（栅格化）布局</h2></a>
+<p>在线demo:https://0ling0.github.io/IFE2017/grid-layout/index.html</p>
