@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>基础JavaScript练习（一）</title>
+<style type="text/css">
+	.text{
+		width: 150px;
+		border: 1px solid #eaece9;
+	}
+
+	.right-in{
+		margin-right: 25px;
+	}
+
+	.btn{
+		border: 1px solid #eaece9;
+		background: #fff;
+		border-radius: 4px;
+	}
+
+	.row div{
+		padding: 8px;
+		background: #fb0200;
+		color: #fff;
+		float: left;
+		margin: 2px 5px 0 0;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+
+<input type="text" name="text" class="text" id="text" placeholder="请输入数值" />
+<input type="button" name="left-in" value="左侧入" class="btn" id="leftIn"/>
+<input type="button" name="right-in" value="右侧入" class="right-in btn" id="rightIn"/>
+<input type="button" name="left-out" value="左侧出" class="btn" id="leftOut"/>
+<input type="button" name="right-out" value="右侧出" class="btn" id="rightOut"/>
+
+<div class="row" id="row">
+
+</div>
+
+<script type="text/javascript">
+	var text=document.getElementById("text");
+	var leftIn=document.getElementById("leftIn");
+	var rightIn=document.getElementById("rightIn");
+	var leftOut=document.getElementById("leftOut");
+	var rightOut=document.getElementById("rightOut");
+	var row=document.getElementById("row");
+
+function click(){
+	// 左侧添加数字
+	leftIn.onclick=function(){
+		var node=document.createElement("div");
+		node.innerHTML=text.value;
+		row.insertBefore(node,row.childNodes[0]);
+	}
+
+	// 右侧添加数字
+	rightIn.onclick=function(){
+		var node=document.createElement("div");
+		node.innerHTML=text.value;
+		row.appendChild(node);
+	}
+
+	// 左侧删除数字
+	leftOut.onclick=function(){
+		row.removeChild(row.childNodes[0]);
+	}
+
+	// 右侧删除数字
+	rightOut.onclick=function(){
+		row.removeChild(row.lastChild);
+		changeDiv;
+	}
+
+	// 点击任何一个删除数字
+}
+
+click();
+
+
+</script>
+</body>
+</html>
