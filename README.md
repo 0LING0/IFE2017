@@ -11,5 +11,9 @@
 <p>在线demo:https://0ling0.github.io/IFE2017/grid-layout/index.html</p>
 
 
-<a href="http://ife.baidu.com/course/detail/id/93?t=1488158974647#learn"><h2>零基础JavaScript编码（一）</h2></a>
+<a href="http://ife.baidu.com/course/detail/id/93"><h2>零基础JavaScript编码（一）</h2></a>
 <p>预览：https://0ling0.github.io/IFE2017/js-01/js01.html</p>
+
+<a href="http://ife.baidu.com/course/detail/id/91"><h2>零基础JavaScript编码（二）</h2></a>
+<p>预览：https://0ling0.github.io/IFE2017/js-02/js02.html</p>
+
