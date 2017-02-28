@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<title>基础JavaScript练习（一）</title>
 <style type="text/css">
-	.text{
+	.number{
 		width: 150px;
 		border: 1px solid #eaece9;
 	}
 
-	.right-in{
+	.right_push{
 		margin-right: 25px;
 	}
 
@@ -31,56 +31,89 @@
 </head>
 <body>
 
-<input type="text" name="text" class="text" id="text" placeholder="请输入数值" />
-<input type="button" name="left-in" value="左侧入" class="btn" id="leftIn"/>
-<input type="button" name="right-in" value="右侧入" class="right-in btn" id="rightIn"/>
-<input type="button" name="left-out" value="左侧出" class="btn" id="leftOut"/>
-<input type="button" name="right-out" value="右侧出" class="btn" id="rightOut"/>
+<input type="number" class="number" id="number" placeholder="请输入数值" />
+<input type="button" value="左侧入" class="btn left_unshift" id="left_unshift"/>
+<input type="button" value="右侧入" class="btn right_push" id="right_push"/>
+<input type="button" value="左侧出" class="btn left_shift" id="left_shift"/>
+<input type="button" value="右侧出" class="btn right_pop" id="right_pop"/>
 
 <div class="row" id="row">
 
 </div>
 
 <script type="text/javascript">
-	var text=document.getElementById("text");
-	var leftIn=document.getElementById("leftIn");
-	var rightIn=document.getElementById("rightIn");
-	var leftOut=document.getElementById("leftOut");
-	var rightOut=document.getElementById("rightOut");
+	var queue=[];
+	var number=document.getElementById("number");
+	var leftUnshift=document.getElementById("left_unshift");
+	var rightPush=document.getElementById("right_push");
+	var leftShift=document.getElementById("left_shift");
+	var rightPop=document.getElementById("right_pop");
 	var row=document.getElementById("row");
+	var node=row.childNodes;
 
-function click(){
 	// 左侧添加数字
-	leftIn.onclick=function(){
-		var node=document.createElement("div");
-		node.innerHTML=text.value;
-		row.insertBefore(node,row.childNodes[0]);
+	leftUnshift.onclick=function(ife_number){
+		ife_number=number.value;
+		queue.unshift(ife_number);
+		queue_node();
+		return queue;
+
 	}
 
 	// 右侧添加数字
-	rightIn.onclick=function(){
-		var node=document.createElement("div");
-		node.innerHTML=text.value;
-		row.appendChild(node);
+	rightPush.onclick=function(ife_number){
+		ife_number=number.value;
+		queue.push(ife_number);
+		queue_node();
+		return queue;
 	}
 
 	// 左侧删除数字
-	leftOut.onclick=function(){
-		row.removeChild(row.childNodes[0]);
+	leftShift.onclick=function(){
+		alert(queue[0]);
+		queue.shift();
+		queue_node();
+		return queue;
 	}
 
 	// 右侧删除数字
-	rightOut.onclick=function(){
-		row.removeChild(row.lastChild);
-		changeDiv;
+	rightPop.onclick=function(){
+		alert(queue[queue.length-1]);
+		queue.pop();
+		queue_node();
+		return queue;
 	}
 
-	// 点击任何一个删除数字
-}
+	// 添加子节点
+	function queue_node(){
+		row.innerHTML='';
+		for(var i=0;i<queue.length;i++){
+			if(queue[i]==""){
+				alert("请输入数值后再进行操作");
+			}else{
+				row.innerHTML+='<div>'+queue[i]+'</div>';
+				row.childNodes[i].setAttribute("data-index",i);
+			}
+		}
+	}
 
-click();
+	//点击任意一个数字换行
+	row.onclick=function(event){
+		var index=event.target.getAttribute("data-index");
+		queue.splice(index,1);
+		this.removeChild(event.target);
+		return queue;
+	}
 
 
 </script>
 </body>
 </html>
+
+
+<!-- 总结：也可以用添加和删除节点的方法
+1. insertBefore() 在指定节点之前插入  
+2.appendChild()在最后一个节点后插入
+3.element.childNodes 获取元素的所有子节点  
+4.removeChild 删除子节点。
+ -->
