@@ -23,3 +23,6 @@
 <a href="http://ife.baidu.com/course/detail/id/103"><h2>基础JavaScript练习（一）</h2></a>
 <p>预览：https://0ling0.github.io/IFE2017/js-04/index.html</p>
 
+<a href="http://ife.baidu.com/course/detail/id/105"><h2>基础JavaScript练习（二）</h2></a>
+<p>预览：https://0ling0.github.io/IFE2017/js-05/index.html</p>
+
