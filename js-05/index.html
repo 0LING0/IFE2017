@@ -24,9 +24,7 @@
 	}
 
 	.row div{
-		width: 20px;
-		background: #fb0200;
-		color: #fff;
+		background: pink;
 		float: left;
 		margin-left: 1px;
 		cursor: pointer;
@@ -40,6 +38,8 @@
 <input type="button" value="右侧入" class="btn right_push" id="right_push"/>
 <input type="button" value="左侧出" class="btn left_shift" id="left_shift"/>
 <input type="button" value="右侧出" class="btn right_pop" id="right_pop"/>
+<input type="button" value="随机生成数字" class="btn" id="random"/>
+<input type="button" value="排序" class="btn" id="sort"/>
 
 <div class="row" id="row">
 
@@ -53,30 +53,30 @@
 	var leftShift=document.getElementById("left_shift");
 	var rightPop=document.getElementById("right_pop");
 	var row=document.getElementById("row");
-	var node=row.childNodes;
+	var random=document.getElementById("random");
+	var sort=document.getElementById("sort");
 
 	// 左侧添加数字
 	leftUnshift.onclick=function(ife_number){
 		ife_number=number.value;
-		if(queue.length>59){
-			alert("队列已满，请删除部分元素");
-		}else{
-			queue.unshift(ife_number);
-			queue_node();
-			return queue;
+		if(Number(ife_number)<10||Number(ife_number)>100){
+			return alert("请输入10-100内的数值");
 		}
+		queue.unshift(ife_number);
+		queue_node();
+		return queue;
 	}
 
 	// 右侧添加数字
 	rightPush.onclick=function(ife_number){
 		ife_number=number.value;
-		if(queue.length>59){
-			alert("队列已满，请删除部分元素");
-		}else{
-			queue.push(ife_number);
-			queue_node();
-			return queue;
+		if(Number(ife_number)<10||Number(ife_number)>100){
+		return alert("请输入10-100内的数值");
 		}
+		queue.push(ife_number);
+		queue_node();
+		return queue;
+		
 	}
 
 	// 左侧删除数字
@@ -97,12 +97,15 @@
 
 	// 添加子节点
 	function queue_node(){
+		if(queue.length>60){
+			return alert("对不起，队列已满");
+		}
 		row.innerHTML='';
 		for(var i=0;i<queue.length;i++){
-				row.innerHTML+='<div></div>';
+				row.innerHTML+='<div>'+queue[i]+'</div>';
 				row.childNodes[i].setAttribute("data-index",i);
-				row.childNodes[i].style.height=queue[i]+'px';
-				row.childNodes[i].style.marginTop=100-queue[i]+'px';
+				row.childNodes[i].style.height=queue[i]*2+'px';
+				row.childNodes[i].style.marginTop=200-queue[i]*2+'px';
 		}
 	}
 
@@ -114,6 +117,31 @@
 		return queue;
 	}
 
+	// 随机生成60个数字
+	random.onclick=function(){
+		queue=[];
+		for(var m=0;m<60;m++){
+			queue.push(parseInt(Math.random()*90+10));
+		}
+		queue_node();
+		return queue;
+	}
+
+	//冒泡排序
+	sort.onclick=function(){
+		var temp;
+		for(var m=0;m<(queue.length-1);m++){
+			for(var n=0;n<(queue.length-m-1);n++){
+				if(queue[n]>queue[n+1]){
+					temp=queue[n+1];
+					queue[n+1]=queue[n];
+					queue[n]=temp;
+				}
+			}
+		}
+		queue_node();
+		return queue;
+	}
 </script>
 </body>
 </html>
@@ -124,4 +152,6 @@
 2.appendChild()在最后一个节点后插入
 3.element.childNodes 获取元素的所有子节点  
 4.removeChild 删除子节点。
+
+疑问：1.关于底部对齐
  -->
