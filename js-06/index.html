@@ -57,6 +57,9 @@
 	// 左侧添加数字
 	leftUnshift.onclick=function(ife_text){
 		ife_text=text.value;
+		if(ife_text==""){
+			return alert("请输入数值后再进行操作");
+		}
 		queue=queue.concat(ife_text.split(/[^\u4e00-\u9fa5\w]/));
 		queue_node();
 		return queue;
@@ -66,6 +69,9 @@
 	// 右侧添加数字
 	rightPush.onclick=function(ife_text){
 		ife_text=text.value;
+		if(ife_text==""){
+		return alert("请输入数值后再进行操作");
+		}
 		queue=queue.concat(ife_text.split(/[^\u4e00-\u9fa5\w]/));
 		queue_node();
 		return queue;
@@ -73,6 +79,9 @@
 
 	// 左侧删除数字
 	leftShift.onclick=function(){
+		if(queue.length==0){
+			return alert("对不起，队列已经为空");
+	}
 		alert(queue[0]);
 		queue.shift();
 		queue_node();
@@ -81,6 +90,9 @@
 
 	// 右侧删除数字
 	rightPop.onclick=function(){
+		if(queue.length==0){
+		return alert("对不起，队列已经为空");
+		}
 		alert(queue[queue.length-1]);
 		queue.pop();
 		queue_node();
@@ -91,12 +103,8 @@
 	function queue_node(){
 		row.innerHTML='';
 		for(var i=0;i<queue.length;i++){
-			if(queue[i]==""){
-				return alert("请输入数值后再进行操作");
-			}else{
-				row.innerHTML+='<div>'+queue[i]+'</div>';
-				row.childNodes[i].setAttribute("data-index",i);
-			}
+			row.innerHTML+='<div>'+queue[i]+'</div>';
+			row.childNodes[i].setAttribute("data-index",i);
 		}
 	}
 
