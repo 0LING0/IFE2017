@@ -60,7 +60,7 @@
 		if(ife_text==""){
 			return alert("请输入数值后再进行操作");
 		}
-		queue=queue.concat(ife_text.split(/[^\u4e00-\u9fa5\w]/));
+		queue=queue.concat(ife_text.split(/[\s,;，；、]+/));
 		queue_node();
 		return queue;
 
@@ -72,7 +72,7 @@
 		if(ife_text==""){
 		return alert("请输入数值后再进行操作");
 		}
-		queue=queue.concat(ife_text.split(/[^\u4e00-\u9fa5\w]/));
+		queue=queue.concat(ife_text.split(/[\s,;，；、]+/));
 		queue_node();
 		return queue;
 	}
@@ -119,11 +119,17 @@
 	//查询框模糊匹配
 	selectBtn.onclick=function(ife_text){
 		ife_text=select.value;
+		select.value='';
+		var temp=[];
 		for(var i=0;i<queue.length;i++){
 			row.childNodes[i].style.color="#000";
 			if(queue[i].indexOf(ife_text)!=-1){
 				row.childNodes[i].style.color="#f00";
+				temp.push(queue[i]);
 			}
+		}
+		if(temp.length==0){
+			return alert("对不起，您查找的内容不存在");
 		}
 	}
 
