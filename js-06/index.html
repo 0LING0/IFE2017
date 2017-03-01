@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>基础JavaScript练习（一）</title>
+<style type="text/css">
+	.text{
+		border: 1px solid #eaece9;
+	}
+
+	.right_push{
+		margin-right: 25px;
+	}
+
+	.btn{
+		border: 1px solid #eaece9;
+		background: #fff;
+		border-radius: 4px;
+	}
+
+	.row div{
+		padding: 8px;
+		/*background: #ffc0cb;*/
+		background: #eee;
+		color: #000;
+		float: left;
+		margin: 2px 5px 0 0;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+
+<textarea class="text" id="text"></textarea>
+<input type="button" value="左侧入" class="btn left_unshift" id="left_unshift"/>
+<input type="button" value="右侧入" class="btn right_push" id="right_push"/>
+<input type="button" value="左侧出" class="btn left_shift" id="left_shift"/>
+<input type="button" value="右侧出" class="btn right_pop" id="right_pop"/>
+<input type="text" class="select" id="select" placeholder="请输入您要查询的关键字"/>
+<input type="button" value="查询" class="btn" id="selectBtn"/>
+
+<div class="row" id="row">
+
+</div>
+
+<script type="text/javascript">
+	var queue=[];
+	var text=document.getElementById("text");
+	var leftUnshift=document.getElementById("left_unshift");
+	var rightPush=document.getElementById("right_push");
+	var leftShift=document.getElementById("left_shift");
+	var rightPop=document.getElementById("right_pop");
+	var row=document.getElementById("row");
+	var select=document.getElementById("select");
+	var selectBtn=document.getElementById("selectBtn");
+
+	// 左侧添加数字
+	leftUnshift.onclick=function(ife_text){
+		ife_text=text.value;
+		queue=queue.concat(ife_text.split(/[^\u4e00-\u9fa5\w]/));
+		queue_node();
+		return queue;
+
+	}
+
+	// 右侧添加数字
+	rightPush.onclick=function(ife_text){
+		ife_text=text.value;
+		queue=queue.concat(ife_text.split(/[^\u4e00-\u9fa5\w]/));
+		queue_node();
+		return queue;
+	}
+
+	// 左侧删除数字
+	leftShift.onclick=function(){
+		alert(queue[0]);
+		queue.shift();
+		queue_node();
+		return queue;
+	}
+
+	// 右侧删除数字
+	rightPop.onclick=function(){
+		alert(queue[queue.length-1]);
+		queue.pop();
+		queue_node();
+		return queue;
+	}
+
+	// 添加子节点函数
+	function queue_node(){
+		row.innerHTML='';
+		for(var i=0;i<queue.length;i++){
+			if(queue[i]==""){
+				return alert("请输入数值后再进行操作");
+			}else{
+				row.innerHTML+='<div>'+queue[i]+'</div>';
+				row.childNodes[i].setAttribute("data-index",i);
+			}
+		}
+	}
+
+	//点击任意一个数字换行
+	row.onclick=function(event){
+		var index=event.target.getAttribute("data-index");
+		queue.splice(index,1);
+		this.removeChild(event.target);
+		return queue;
+	}
+
+	//查询框模糊匹配
+	selectBtn.onclick=function(ife_text){
+		ife_text=select.value;
+		for(var i=0;i<queue.length;i++){
+			row.childNodes[i].style.color="#000";
+			if(queue[i].indexOf(ife_text)!=-1){
+				row.childNodes[i].style.color="#f00";
+			}
+		}
+	}
+
+</script>
+</body>
+</html>
+<!-- 点击查询框如果找不到某个元素弹出警示框的代码要如何实现 -->
