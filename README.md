@@ -29,3 +29,6 @@
 <a href="http://ife.baidu.com/course/detail/id/107"><h2>基础JavaScript练习（三）</h2></a>
 <p>预览：https://0ling0.github.io/IFE2017/js-06/index.html</p>
 
+<a href="http://ife.baidu.com/course/detail/id/97"><h2>表单(一)单个表单项的检验</h2></a>
+<p>预览：https://0ling0.github.io/IFE2017/form-01/index.html</p>
+
