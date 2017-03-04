@@ -102,7 +102,7 @@
 		for(var i=0; i<str.length;i++){
 			//返回指定位置的字符的Unicode编码
 			var countCode=str.charCodeAt(i);
-			//判断是否为ASCII码
+			//判断是否为ASCII码,Unicode前128个字符是ASCII码
 			if(countCode>0&&countCode<128){
 				inputLength++;
 			}else{

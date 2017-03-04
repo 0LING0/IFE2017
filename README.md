@@ -32,3 +32,6 @@
 <a href="http://ife.baidu.com/course/detail/id/97"><h2>表单(一)单个表单项的检验</h2></a>
 <p>预览：https://0ling0.github.io/IFE2017/form-01/index.html</p>
 
+<a href="http://ife.baidu.com/course/detail/id/101"><h2>表单(二)多个表单项的动态校验</h2></a>
+<p>预览：https://0ling0.github.io/IFE2017/form-02/index.html</p>
+
