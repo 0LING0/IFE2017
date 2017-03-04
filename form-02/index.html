@@ -244,7 +244,7 @@
 		}
 		function phone_onblur(){
 			var inputValue=phone.value;
-			var reg=/^\d{11}$/;
+			var reg=/^1[34578]\d{9}$/;
 			if(reg.test(inputValue)){
 				span[4].innerHTML="手机格式正确";
 				span[4].style.color="green";
