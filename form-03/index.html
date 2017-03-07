@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单（三）联动</title>
+	<meta charset="utf-8" />
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin:0;
+	}
+
+	body{
+		font-size: 14px;
+		font-family: "微软雅黑";
+	}
+	div:nth-of-type(1){
+		margin-bottom: 45px;
+	}
+
+	label{
+		width: 80px;
+		display: inline-block;
+	}
+
+	.school{
+		text-indent: 31px;
+	}
+
+	.boxStudent{
+		padding: 0 87px;
+	}
+	.boxCompany{
+		display: none;
+	}
+	#nostudent{
+		margin-left: 94px;
+	}
+	#city{
+		margin-right: 40px;
+		width: 50px;
+		height: 30px;
+		border-radius: 3px;
+		border: 1px solid #ccc;
+	}
+	#company{
+		width:300px;
+		height: 30px;
+		border-radius: 3px;
+		border: 1px solid #ccc;
+	}
+	#school_b,#school_s,#school_w{
+		width: 200px;
+		height: 30px;
+		border-radius: 3px;
+		border: 1px solid #ccc;
+	}
+	#school_b{
+		display: inline-block;
+	}
+	#school_s,#school_w{
+		display: none;
+	}
+
+	.wrap{
+		width: 500px;
+		margin:20vh auto 0;
+	}
+
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="boxStudent">
+		<input type="radio" name="status" id="student" checked="checked" />
+		<label for="student">在校生</label>
+		<input type="radio" name="status" id="nostudent" />
+		<label for="nostudent">非在校生</label>
+	</div>
+	<form class="boxSchool">
+		<label class="school" for="city">学校</label>
+		<select id="city">
+			<option value="beijing">北京</option>
+			<option value="shanghai">上海</option>
+			<option value="wuhan">武汉</option>
+		</select>
+		<select id="school_b">
+			<option value="QingHua">清华大学</option>
+			<option value="BeiDa">北京大学</option>
+			<option value="BeiHang">北京航空航天大学</option>
+		</select>
+		<select id="school_s">
+			<option value="shjd">上海交通大学</option>
+			<option value="tongji">同济大学</option>
+			<option value="fudan">复旦大学</option>
+		</select>
+		<select id="school_w">
+			<option value="whdx">武汉大学</option>
+			<option value="hzkj">华中科技大学</option>
+			<option value="whlg">武汉理工大学</option>
+		</select>
+	</form>
+	<form class="boxCompany">
+		<label for="company">就业单位</label>
+		<input type="text" name="text" id="company">
+	</form>
+</div>
+
+<script type="text/javascript">
+
+	var forms=document.getElementsByTagName("form"),
+		selects=forms[0].getElementsByTagName("select"),
+		options=selects[0].querySelectorAll("option"),
+		boxStudent=document.querySelector(".boxStudent"),
+		inputs=boxStudent.querySelectorAll("input");
+
+		//选择在校生，非在校生
+	    boxStudent.onclick=function(){
+			for(var i=0; i<forms.length;i++){
+				forms[i].style.display="none";
+			}
+			if(inputs[0].checked){
+				forms[0].style.display="block";
+			}
+			if(inputs[1].checked){
+				forms[1].style.display="block";
+			}
+		}
+
+		// 选择城市，学校跟着一起变化
+		selects[0].onchange=function(){
+			for(var m=1,len=selects.length; m<len; m++){
+					selects[m].style.display="none";
+				}
+			for(var j=0,len=options.length;j<len;j++){
+				if(options[j].selected){
+					selects[j+1].style.display="inline-block";
+				}
+			}
+		}
+
+
+</script>
+
+</form>
+</body>
+</html>
