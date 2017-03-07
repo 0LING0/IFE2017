@@ -37,7 +37,7 @@
 	}
 	#city{
 		margin-right: 40px;
-		width: 50px;
+		width: 65px;
 		height: 30px;
 		border-radius: 3px;
 		border: 1px solid #ccc;
@@ -48,16 +48,16 @@
 		border-radius: 3px;
 		border: 1px solid #ccc;
 	}
-	#school_b,#school_s,#school_w{
+	#school_c,#school_b,#school_s,#school_w{
 		width: 200px;
 		height: 30px;
 		border-radius: 3px;
 		border: 1px solid #ccc;
 	}
-	#school_b{
+	#school_c{
 		display: inline-block;
 	}
-	#school_s,#school_w{
+	#school_s,#school_w,#school_b{
 		display: none;
 	}
 
@@ -79,9 +79,13 @@
 	<form class="boxSchool">
 		<label class="school" for="city">学校</label>
 		<select id="city">
+			<option>请选择</option>
 			<option value="beijing">北京</option>
 			<option value="shanghai">上海</option>
 			<option value="wuhan">武汉</option>
+		</select>
+		<select id="school_c">
+			<option value="choose">请选择</option>
 		</select>
 		<select id="school_b">
 			<option value="QingHua">清华大学</option>
