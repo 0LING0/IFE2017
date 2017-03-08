@@ -35,9 +35,9 @@
 <a href="http://ife.baidu.com/course/detail/id/101"><h2>表单(二)多个表单项的动态校验</h2></a>
 <p>预览：https://0ling0.github.io/IFE2017/form-02/index.html</p>
 
-<a href="http://ife.baidu.com/course/detail/id/106"><h2>表单(二)多个表单项的动态校验</h2></a>
+<a href="http://ife.baidu.com/course/detail/id/106"><h2>表单（三）联动</h2></a>
 <p>预览：https://0ling0.github.io/IFE2017/form-03/index.html</p>
 
-<a href="http://ife.baidu.com/course/detail/id/29"><h2>表单(二)多个表单项的动态校验</h2></a>
+<a href="http://ife.baidu.com/course/detail/id/29"><h2>正则表达式之入门</h2></a>
 <p>预览：https://0ling0.github.io/IFE2017/Regex/index.html</p>
 
