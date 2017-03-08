@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则表达式入门</title>
+	<meta charset="utf-8" />
+	<style type="text/css">
+		section{
+			width: 600px;
+			margin:20vh auto 0;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			background: #f8f8ff;
+			padding: 10px 0 20px 20px;
+		}
+
+		input{
+			width: 350px;
+			height: 25px;
+		}
+
+		span{
+			display: block;
+			width: 350px;
+			height: 30px;
+			margin-top: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<section>
+		<div>
+			<p>任务一:编写一个判断给定数字是否为手机号码的正则表达式</p>
+			<input type="text" name="phone" placeholder="请输入一个手机号，完成后按确认按钮" required="required"/>
+			<button type="button">确认</button>
+			<span></span>
+		</div>
+		<div>
+			<p>任务二：编写一个判断输入的字符串是否有相邻重复单词</p>
+			<input type="text" name="phone" placeholder="请输入几个英文单词，用空格隔开" required="required"/>
+			<button type="button">确认</button>
+			<span></span>
+		</div>
+	</section>
+</body>
+<script type="text/javascript">
+	 var inputs=document.querySelectorAll("input"),
+		 btns=document.querySelectorAll("button"),
+		 spans=document.querySelectorAll("span");
+
+	// 任务一
+	 btns[0].onclick=function(){
+	 	var reg1=/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/,
+		 	reg2=/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))(\d{0,7}|\d{9,})$/,
+		 	inputValue=inputs[0].value.trim();
+
+		if(reg1.test(inputValue)){
+			spans[0].innerHTML="恭喜！您输入的手机号码格式正确";
+			spans[0].style.color="green";
+		}else if(reg2.test(inputValue)){
+			spans[0].innerHTML="对不起，手机号码必须为11位数字";
+			spans[0].style.color="red";
+		}else{
+			spans[0].innerHTML="对不起，这个不是手机号码";
+			spans[0].style.color="red";
+		}
+	 }
+
+	//输入框聚焦时提醒消失
+	 inputs[0].onfocus=function(){
+	 	spans[0].innerHTML="";
+	 }
+
+	// 任务二
+	 btns[1].addEventListener("click",testString);
+	 function testString(){
+	 	var reg=/\b([a-zA-Z[^-]]+)\b\s+\1\b/,
+		 	inputValue=inputs[1].value.trim();
+	 	if(reg.test(inputValue)){
+	 		spans[1].innerHTML="您输入的字符串中有重复单词:"+inputValue.match(reg)[0];
+	 		spans[1].style.color="red";
+	 	}else{
+	 		spans[1].innerHTML="您输入的字符串中没有重复单词"
+	 		spans[1].style.color="green";
+	 	}
+	 }
+	//输入框聚焦时提醒消失
+	 inputs[1].onfocus=function(){
+	 	spans[1].innerHTML="";
+	 }
+
+</script>
+</html>
