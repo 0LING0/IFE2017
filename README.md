@@ -41,3 +41,5 @@
 <a href="http://ife.baidu.com/course/detail/id/29"><h2>正则表达式之入门</h2></a>
 <p>预览：https://0ling0.github.io/IFE2017/Regex/regex.html</p>
 
+<a href="http://ife.baidu.com/course/detail/id/85"><h2>正则表达式之入门</h2></a>
+<p>预览：请在命令行中输入phantomjs task.js "你要查的关键词"</p>
